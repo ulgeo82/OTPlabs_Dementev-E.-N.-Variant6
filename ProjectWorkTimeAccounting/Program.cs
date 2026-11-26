@@ -1,7 +1,11 @@
-﻿using ProjectWorkTimeAccounting.Forms;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using ProjectWorkTimeAccounting.Forms;
 using ProjectWorkTimeAccounting.Repositories;
 using ProjectWorkTimeAccounting.Repositories.Implementations;
+using Serilog;
 using Unity;
+using Unity.Microsoft.Logging;
 
 namespace ProjectWorkTimeAccounting;
 
@@ -18,6 +22,10 @@ internal static class Program
     {
         var container = new UnityContainer();
 
+        container.AddExtension(new LoggingExtension(CreateLoggerFactory()));
+
+        container.RegisterType<DataContext>();
+
         container.RegisterType<IQualificationRepository, QualificationRepository>();
         container.RegisterType<IEmployeeRepository, EmployeeRepository>();
         container.RegisterType<IProjectRepository, ProjectRepository>();
@@ -25,5 +33,20 @@ internal static class Program
         container.RegisterType<ISalaryPaymentRepository, SalaryPaymentRepository>();
 
         return container;
+    }
+
+    private static LoggerFactory CreateLoggerFactory()
+    {
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+        var loggerFactory = new LoggerFactory();
+        loggerFactory.AddSerilog(new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger());
+
+        return loggerFactory;
     }
 }
