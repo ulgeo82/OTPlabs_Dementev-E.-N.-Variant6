@@ -1,5 +1,6 @@
 ﻿using ProjectWorkTimeAccounting.Entities;
 using ProjectWorkTimeAccounting.Repositories;
+using ProjectWorkTimeAccounting.Repositories.Implementations;
 
 namespace ProjectWorkTimeAccounting.Forms;
 
@@ -40,7 +41,7 @@ public partial class FormSalaryPayment : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

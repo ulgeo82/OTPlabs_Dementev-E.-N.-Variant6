@@ -34,7 +34,7 @@ public class SalaryPaymentRepository : ISalaryPaymentRepository
         {
             _context.ChangeTracker.Clear();
             _logger.LogError(ex, "Ошибка при добавлении объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -68,7 +68,7 @@ public class SalaryPaymentRepository : ISalaryPaymentRepository
         catch (Exception ex)
         {
             _logger.LogError(ex, "Ошибка при чтении объектов");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 }

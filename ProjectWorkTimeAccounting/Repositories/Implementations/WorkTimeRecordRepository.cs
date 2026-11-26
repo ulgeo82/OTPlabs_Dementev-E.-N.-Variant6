@@ -47,7 +47,7 @@ public class WorkTimeRecordRepository : IWorkTimeRecordRepository
             transaction.Rollback();
             _context.ChangeTracker.Clear();
             _logger.LogError(ex, "Ошибка при добавлении объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -76,7 +76,7 @@ public class WorkTimeRecordRepository : IWorkTimeRecordRepository
             transaction.Rollback();
             _context.ChangeTracker.Clear();
             _logger.LogError(ex, "Ошибка при удалении объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -117,7 +117,7 @@ public class WorkTimeRecordRepository : IWorkTimeRecordRepository
         catch (Exception ex)
         {
             _logger.LogError(ex, "Ошибка при чтении объектов");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 }

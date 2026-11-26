@@ -34,7 +34,7 @@ public class QualificationRepository : IQualificationRepository
         {
             _context.ChangeTracker.Clear();
             _logger.LogError(ex, "Ошибка при добавлении объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -54,7 +54,7 @@ public class QualificationRepository : IQualificationRepository
         {
             _context.ChangeTracker.Clear();
             _logger.LogError(ex, "Ошибка при редактировании объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -75,7 +75,7 @@ public class QualificationRepository : IQualificationRepository
         {
             _context.ChangeTracker.Clear();
             _logger.LogError(ex, "Ошибка при удалении объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -93,7 +93,7 @@ public class QualificationRepository : IQualificationRepository
         catch (Exception ex)
         {
             _logger.LogError(ex, "Ошибка при поиске объекта");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 
@@ -110,7 +110,7 @@ public class QualificationRepository : IQualificationRepository
         catch (Exception ex)
         {
             _logger.LogError(ex, "Ошибка при чтении объектов");
-            throw;
+            throw DatabaseErrors.Translate(ex);
         }
     }
 }

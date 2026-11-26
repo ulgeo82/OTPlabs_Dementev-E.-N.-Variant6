@@ -1,6 +1,7 @@
 ﻿using ProjectWorkTimeAccounting.Entities;
 using ProjectWorkTimeAccounting.Entities.Enums;
 using ProjectWorkTimeAccounting.Repositories;
+using ProjectWorkTimeAccounting.Repositories.Implementations;
 using System.ComponentModel;
 
 namespace ProjectWorkTimeAccounting.Forms;
@@ -29,7 +30,7 @@ public partial class FormEmployee : Form
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка при получении данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при получении данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
@@ -71,7 +72,7 @@ public partial class FormEmployee : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using Unity;
+﻿using ProjectWorkTimeAccounting.Repositories.Implementations;
+using Unity;
 
 namespace ProjectWorkTimeAccounting.Forms;
 
@@ -31,7 +32,7 @@ public partial class FormWorkTimeAccounting : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

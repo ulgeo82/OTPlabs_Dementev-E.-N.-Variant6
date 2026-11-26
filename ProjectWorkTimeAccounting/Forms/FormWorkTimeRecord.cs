@@ -1,6 +1,7 @@
 ﻿using ProjectWorkTimeAccounting.Entities;
 using ProjectWorkTimeAccounting.Entities.Enums;
 using ProjectWorkTimeAccounting.Repositories;
+using ProjectWorkTimeAccounting.Repositories.Implementations;
 
 namespace ProjectWorkTimeAccounting.Forms;
 
@@ -62,7 +63,7 @@ public partial class FormWorkTimeRecord : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

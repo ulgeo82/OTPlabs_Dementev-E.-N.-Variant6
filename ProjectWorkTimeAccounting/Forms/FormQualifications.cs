@@ -1,4 +1,5 @@
 ﻿using ProjectWorkTimeAccounting.Repositories;
+using ProjectWorkTimeAccounting.Repositories.Implementations;
 using Unity;
 
 namespace ProjectWorkTimeAccounting.Forms;
@@ -25,7 +26,7 @@ public partial class FormQualifications : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
@@ -38,7 +39,7 @@ public partial class FormQualifications : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при добавлении", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
@@ -58,7 +59,7 @@ public partial class FormQualifications : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при изменении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при изменении", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
@@ -81,7 +82,7 @@ public partial class FormQualifications : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Ошибка при удалении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(DatabaseErrors.GetMessage(ex), "Ошибка при удалении", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
