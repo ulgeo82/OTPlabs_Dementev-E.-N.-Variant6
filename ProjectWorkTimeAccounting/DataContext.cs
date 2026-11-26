@@ -7,7 +7,7 @@ namespace ProjectWorkTimeAccounting;
 public class DataContext : DbContext
 {
     private const string ConnectionString =
-        "Host=10.211.55.2;Port=5432;Database=work_time_accounting;Username=postgres;Password=Sda732810927109";
+        "Host=10.211.55.2;Port=5433;Database=work_time_accounting;Username=postgres;Password=Sda732810927109";
 
     public DbSet<Qualification> Qualifications { get; set; }
 
