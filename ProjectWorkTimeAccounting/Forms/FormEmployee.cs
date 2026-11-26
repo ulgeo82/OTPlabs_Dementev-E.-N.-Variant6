@@ -79,9 +79,4 @@ public partial class FormEmployee : Form
 
     private Employee CreateEmployee(int id, EmployeePost post) =>
         Employee.CreateEntity(id, textBoxFullName.Text, post, (int)comboBoxQualification.SelectedValue!);
-
-    private void textBoxFullName_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 }
